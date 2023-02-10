@@ -38,3 +38,8 @@
 
 
 7. select quantity of item in the box
+
+
+8. save item with cookie
+    1. install js-cookie package
+    2.save and retrieve cart items in cookie
