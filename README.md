@@ -15,4 +15,10 @@
     4. add footer
     5. add tailwind classes
 
-
+3. create product details
+    1. create product page
+    2. create 3 columns
+    3.show image in front column
+    4. show product info in second column
+    5. add styles
+    
