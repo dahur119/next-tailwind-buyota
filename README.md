@@ -36,3 +36,5 @@
     3. list item in cart items
     4. redirect to cart screen after add to cart
 
+
+7. select quantity of item in the box
