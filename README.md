@@ -37,6 +37,15 @@
     4. redirect to cart screen after add to cart
 
 
+
+
+6. connect to mongoDB
+    1. install mongoose
+    2. install monogdb or use monogdb atlas
+    3. save connection url in.env file
+    4. create db utils
+    5. create sample users
+
 7. select quantity of item in the box
 
 
@@ -49,9 +58,4 @@
     2. create input boxes
     3. add login button
 
-6. connect to mongoDB
-    1. install mongoose
-    2. install monogdb or use monogdb atlas
-    3. save connection url in.env file
-    4. create db utils
-    5. create sample users
+10. save session with cookie
