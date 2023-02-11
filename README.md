@@ -59,3 +59,9 @@
     3. add login button
 
 10. save session with cookie
+
+11. add user menu
+    1. check user authenication
+    2. install headlessui 
+    3. show user menu
+ 
