@@ -3,9 +3,15 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useContext } from 'react';
 import { Store } from '../utilis/Store';
-
+import { Menu } from '@headlessui/react';
+import DropdownLink from './DropdownLink';
+import { ToastContainer } from 'react-toastify';
+import { signOut, useSession } from 'next-auth/react';
+import Cookies from 'js-cookie';
+// import 'react-toastify/dist/react-toastify.css'
 function Layout({title, children}) {
-  const {state} = useContext(Store)
+  const {status, data:session} = useSession()
+  const {state, dispatch} = useContext(Store)
   const {cart} = state;
   const [cartItemCount, setCartItemCount] = useState(0)
 
@@ -13,6 +19,12 @@ function Layout({title, children}) {
     setCartItemCount(cart.cartItems.reduce((a, c)=>a+c.quantity, 0))
 
   }, [cart.cartItems])
+
+  const logoutClickHandler =() =>{
+    Cookies.remove('cart')
+    dispatch({type:'CART_RESET'})
+    signOut({callbackUrl:'/login'})
+  }
  
   return (
     <>
@@ -21,6 +33,7 @@ function Layout({title, children}) {
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <ToastContainer position='bottom-center' limit={1}/>
     <div className='flex min-h-screen flex-col justify-between '>
         <header>
             <nav className='flex h-12 items-center px-4 justify-between shadow-md ' >
@@ -29,7 +42,7 @@ function Layout({title, children}) {
                 </Link>   
 
               <div>
-                <Link href="/cart" legacyBehavior>
+                  <Link href="/cart" legacyBehavior>
                   <a className='p-2'>
                     cart 
                   {cartItemCount > 0 && (
@@ -41,9 +54,46 @@ function Layout({title, children}) {
                    )}
                   </a>
                   </Link>
-                <Link href="/login" legacyBehavior>
-                  <a className='p-2'>login</a>
+                
+                  {status === 'loading' ? ('loading') :
+                  
+                     session?.user ?
+                      <Menu as="div" className='relative in-block'>
+                        <Menu.Button className="text-blue-600">
+                          {session.user.name}
+
+                        </Menu.Button>
+                        <Menu.Items className="absolute right-0 w-56 origin-top-right shadow-lg">
+                          <Menu.Item>
+                            <DropdownLink className="dropdown-link" href="/profile">
+                              Profile
+
+                            </DropdownLink>
+                          </Menu.Item>
+
+                          <Menu.Item>
+                            <DropdownLink className="dropdown-link" href="/order-history">
+                                Order history
+
+                            </DropdownLink>
+                          </Menu.Item>
+                          <Menu.Item>
+                            <DropdownLink className="dropdown-link" href="/#" onClick={logoutClickHandler}>
+                              logout
+
+                            </DropdownLink>
+                          </Menu.Item>
+                        </Menu.Items>
+                      </Menu>
+                  :
+                  (
+                    <Link href="/login" legacyBehavior>
+                       <a className='p-2'>login</a>
                   </Link>
+                  )
+                
+                }
+                 
               </div>
             </nav>
 

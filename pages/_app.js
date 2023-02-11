@@ -1,11 +1,20 @@
 import '../styles/globals.css'
 import { StoreProvider } from '../utilis/Store'
-
-function MyApp({ Component, pageProps }) {
-  return <StoreProvider>
+import { SessionProvider } from 'next-auth/react'
+function MyApp({ Component, pageProps:{session, ...pageProps} }) {
+  return (
+    <SessionProvider session={session}>
+      <StoreProvider>
     <Component {...pageProps} />
     
     </StoreProvider>
+
+    </SessionProvider>
+    
+
+  )
+  
+
 }
 
 export default MyApp

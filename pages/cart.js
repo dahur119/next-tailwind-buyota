@@ -6,18 +6,24 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {XCircleIcon} from '@heroicons/react/outline'
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 function CartScreen() {
     const {state, dispatch} = useContext(Store)
     const router = useRouter()
-
+    
     const {
-
-        cart:{cartItems},
+        cart:{cartItems}
     } = state
 
+    console.log('checking',state.cart)
     const removeHandler =(item)=>{
         dispatch({type:'CART_REMOVE_ITEM', payload:item})
+
+    }
+    const updateCartHandler =(item, qty) =>{
+        const quantity = Number(qty)
+        dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
 
     }
 
@@ -36,9 +42,9 @@ function CartScreen() {
                             <table className='min-w-full'>
                                 <thead className='border-b'>
                                     <tr>
-                                        <th className='px-5 text-left'>item</th>
-                                        <th className='px-5 text-right'>item</th>
-                                        <th className='px-5 text-right'>item</th>
+                                        <th className='px-5 text-left'>images</th>
+                                        <th className='px-5 text-right'>quantity</th>
+                                        <th className='px-5 text-right'>Price</th>
                                         <th className='p-5'>Action</th>
                                     </tr>
 
@@ -63,7 +69,21 @@ function CartScreen() {
                                                 </a>
                                             </Link>
                                         </td>
-                                        <td className='p-5 text-right'>{item.quantity}</td>
+                                        <td className='p-5 text-right'>
+                                        <select
+                        value={item.quantity}
+                        onChange={(e) =>
+                          updateCartHandler(item, e.target.value)
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select>
+                                         
+                                        </td>
                                         <td className='p-5 text-right'> ${item.price}</td> 
                                         <td className='p-5 text-center'>
                                             <button onClick={()=>removeHandler(item)}>
@@ -88,7 +108,7 @@ function CartScreen() {
                                 </li>
                                 <li>
                                     <button
-                                    onClick={()=>router.push('/shipping')}
+                                    onClick={()=>router.push('login?redirect=/shipping')}
                                     
                                     className='primary-button w-full'>
                                         Check Out
@@ -104,6 +124,7 @@ function CartScreen() {
 
     </Layout>
   )
+    
 }
 
-export default CartScreen
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });  
