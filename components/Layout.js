@@ -8,7 +8,7 @@ import DropdownLink from './DropdownLink';
 import { ToastContainer } from 'react-toastify';
 import { signOut, useSession } from 'next-auth/react';
 import Cookies from 'js-cookie';
-// import 'react-toastify/dist/react-toastify.css'
+import 'react-toastify/dist/ReactToastify.css';
 function Layout({title, children}) {
   const {status, data:session} = useSession()
   const {state, dispatch} = useContext(Store)
