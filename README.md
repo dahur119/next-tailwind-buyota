@@ -65,3 +65,6 @@
     2. install headlessui 
     3. show user menu
  
+12. create shipping screen
+    1. display address field
+    2. save address in context
