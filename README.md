@@ -72,3 +72,8 @@
 13. create payment method screen
     1. display payment methods
     2. save payment method in context
+
+14. seed sample products
+    1. insert sample products to monogb
+    2. load products from db in home and product screen
+    3. check product count in stuck in add to cart
