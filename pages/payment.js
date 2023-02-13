@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
 
-function PaymentScreen() {
+export default function PaymentScreen() {
     const router  = useRouter();
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('')
 
@@ -82,4 +82,4 @@ function PaymentScreen() {
     </Layout>
 }
 
-export default PaymentScreen
+PaymentScreen.auth = true

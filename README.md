@@ -82,3 +82,10 @@
     1. load products in home page from monogodb
     2. load products in products page from monogodb
     3. use products api to check count in stock in add to cart
+
+
+16. create place order screen
+    1. display shipping address
+    2. display payment method
+    3. display order items
+    4. implement create order

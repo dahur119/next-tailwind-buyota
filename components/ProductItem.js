@@ -4,7 +4,7 @@ import React from 'react'
 
 
 
-function ProductItem({product}) {
+function ProductItem({product, addToCartHandler}) {
   return (
     <div className='card'>
         <Link href={`/product/${product.slug}`} legacyBehavior>
@@ -25,7 +25,7 @@ function ProductItem({product}) {
            </Link>
            <p className='mb-2'>{product.brand}</p>
            <p>${product.price}</p>
-           <button className='primary-button' type='button'>
+           <button className='primary-button' type='button' onClick={()=>addToCartHandler(product)}>
             Add to cart 
            </button>
 
