@@ -77,3 +77,8 @@
     1. insert sample products to monogb
     2. load products from db in home and product screen
     3. check product count in stuck in add to cart
+
+15. load products MongoDb
+    1. load products in home page from monogodb
+    2. load products in products page from monogodb
+    3. use products api to check count in stock in add to cart
