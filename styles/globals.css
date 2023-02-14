@@ -53,3 +53,10 @@ textarea{
   @apply rounded border p-2 outline-none ring-indigo-300 focus:ring
 }
 
+.alert-error{
+  @apply my-3 rounded-lg bg-red-100 p-3 text-red-700
+}
+
+/* .alert-success{
+  @apply my-3 rounded-lg bg-red-100 p-3 green-red-700
+} */
