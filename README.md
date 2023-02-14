@@ -100,3 +100,11 @@
     1. create signUo api
     2. create register page
     3. call api on form submit
+
+19. Pay Order By paypal
+    1. add paypal button
+    2. handle payment
+    3. create backend api
+    4. update order state 
+
+
