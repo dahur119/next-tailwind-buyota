@@ -111,4 +111,10 @@
     1. create my order api
     2. create order history component
     3. fetch orders and display them
-    4. //
+    4. 
+
+25. Publish On vercel
+    1. create vercel account
+    2. connect to github
+    3. set next auth and mongodb in env vars
+    3. push code to github
