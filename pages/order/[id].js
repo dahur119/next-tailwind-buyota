@@ -34,7 +34,7 @@ export default function OrderScreen(){
     const {query} = useRouter()
     const orderId = query.id;
 
-    const [{loading, error, order, successPay, loadingPay, errorPay}, dispatch,
+    const [{loading, error, order, successPay, loadingPay}, dispatch,
         ] = useReducer(reducer, {
             loading:true,
             order:{},
@@ -91,6 +91,7 @@ export default function OrderScreen(){
             isDelivered,
             deliveredAt,
           } = order;
+          console.log('checking shipping', shippingPrice)
 
     function createOrder(data, actions){
         return actions.order.create({
@@ -113,7 +114,7 @@ export default function OrderScreen(){
               details
             );
             dispatch({ type: 'PAY_SUCCESS', payload: data });
-            toast.success('Order is paid successgully');
+            toast.success('Order is paid successfully');
           } catch (err) {
             dispatch({ type: 'PAY_FAIL', payload: getError(err) });
             toast.error(getError(err));
@@ -219,8 +220,8 @@ export default function OrderScreen(){
                             </li> 
                             <li>
                             <div className="mb-2 flex justify-between">
-                                <div>Tax</div>
-                                <div>${taxPrice}</div>
+                                <div>Shipping</div>
+                                <div>${shippingPrice}</div>
                             </div>
                             </li>
                             <li>
