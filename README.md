@@ -117,4 +117,9 @@
     1. create vercel account
     2. connect to github
     3. set next auth and mongodb in env vars
-    3. push code to github trur
+    3. push code to github 
+
+26. Update User  Profile
+    1. create profile screen
+    2. show user info
+    3. handle update user info
