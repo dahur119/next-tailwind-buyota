@@ -117,4 +117,4 @@
     1. create vercel account
     2. connect to github
     3. set next auth and mongodb in env vars
-    3. push code to github
+    3. push code to github trur
